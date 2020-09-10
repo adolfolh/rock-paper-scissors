@@ -14,18 +14,19 @@ class MainApplication(tk.Frame):
         window.title("Rock Paper Scissors by Adolfo López Herrera")
 
         # label header
-        lbl = Label(window, text="\nWelcome to Rock Paper Scissors!", height=2, font=("Helvetica Bold", 32))
+        lbl = Label(window, text="\nWelcome to Rock Paper Scissors!", height=2, font=("Helvetica Bold", 28))
         lbl.config(anchor=CENTER)
-        lbl.pack()
+        lbl.pack(pady=10)
 
         # setting window size
         window.geometry('500x500')
 
         # initial output isn't set to anything
-        output = "??"
+        self.output = tk.StringVar()
+        self.output.set("??")
 
         # output label
-        output_lbl = Label(window, text="\n" + output, font=("Helvetica Bold", 80))
+        output_lbl = Label(window, textvariable=self.output, font=("Helvetica Bold", 100), height=2)
         output_lbl.config(anchor=CENTER)
         output_lbl.pack()
 
@@ -48,14 +49,34 @@ class MainApplication(tk.Frame):
         btn3.grid(row=0, column=3)
         btn3.pack(padx=33.3333333333, pady=0, side=tk.LEFT)
 
+    def RandomOutput(self):
+        # random output generator
+        outputNum = random.randint(1, 3)
+        if outputNum == 1:
+            out = "✊"
+        elif outputNum == 2:
+            out = "✋"
+        else:
+            out = "✌️"
+
+        return self.output.set(out)
+
     def Rock(self):
         """when user selects Rock"""
+        MainApplication.RandomOutput(self)
+
 
     def Paper(self):
         """when user selects Paper"""
+        MainApplication.RandomOutput(self)
+
+
 
     def Scissor(self):
         """when user selects Scissor"""
+        MainApplication.RandomOutput(self)
+
+
 
 
 if __name__ == "__main__":
