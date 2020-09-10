@@ -49,6 +49,33 @@ class MainApplication(tk.Frame):
         btn3.grid(row=0, column=3)
         btn3.pack(padx=33.3333333333, pady=0, side=tk.LEFT)
 
+    def popupmsg_winning(self):
+        popup = tk.Tk()
+        popup.wm_title("You Won!")
+        label = tk.Label(popup, text="👏🏻" + "\nWell done! You beat me.", font=("Helvetica Bold", 20))
+        label.pack(side="top", fill="x", pady=10, padx=10)
+        B1 = tk.Button(popup, text="Okay", command=popup.destroy)
+        B1.pack()
+        popup.mainloop()
+
+    def popupmsg_losing(self):
+        popup = tk.Tk()
+        popup.wm_title("You Lost!")
+        label = tk.Label(popup, text="👾" + "\nGood Try! But you can't beat me.", font=("Helvetica Bold", 20))
+        label.pack(side="top", fill="x", pady=10, padx=10)
+        B1 = tk.Button(popup, text="Okay", command=popup.destroy)
+        B1.pack()
+        popup.mainloop()
+
+    def popupmsg_tie(self):
+        popup = tk.Tk()
+        popup.wm_title("You Lost!")
+        label = tk.Label(popup, text="💢" + "\nUgh! We tied...", font=("Helvetica Bold", 20))
+        label.pack(side="top", fill="x", pady=10, padx=10)
+        B1 = tk.Button(popup, text="Okay", command=popup.destroy)
+        B1.pack()
+        popup.mainloop()
+
     def RandomOutput(self):
         # random output generator
         outputNum = random.randint(1, 3)
@@ -59,24 +86,40 @@ class MainApplication(tk.Frame):
         else:
             out = "✌️"
 
-        return self.output.set(out)
+        self.output.set(out)
+
+        return outputNum
 
     def Rock(self):
         """when user selects Rock"""
         MainApplication.RandomOutput(self)
+        if MainApplication.RandomOutput(self) == 1:
+            MainApplication.popupmsg_tie(self)
+        elif MainApplication.RandomOutput(self) == 2:
+            MainApplication.popupmsg_losing(self)
+        else:
+            MainApplication.popupmsg_winning(self)
 
 
     def Paper(self):
         """when user selects Paper"""
         MainApplication.RandomOutput(self)
-
-
+        if MainApplication.RandomOutput(self) == 1:
+            MainApplication.popupmsg_winning(self)
+        elif MainApplication.RandomOutput(self) == 2:
+            MainApplication.popupmsg_tie(self)
+        else:
+            MainApplication.popupmsg_losing(self)
 
     def Scissor(self):
         """when user selects Scissor"""
         MainApplication.RandomOutput(self)
-
-
+        if MainApplication.RandomOutput(self) == 1:
+            MainApplication.popupmsg_losing(self)
+        elif MainApplication.RandomOutput(self) == 2:
+            MainApplication.popupmsg_winning(self)
+        else:
+            MainApplication.popupmsg_tie(self)
 
 
 if __name__ == "__main__":
