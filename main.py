@@ -97,30 +97,30 @@ class MainApplication(tk.Frame):
 
     def Rock(self):
         """when user selects Rock"""
-        MainApplication.RandomOutput(self)
-        if MainApplication.RandomOutput(self) == 1:
+        output = MainApplication.RandomOutput(self)
+        if output == 1:
             MainApplication.popupmsg_tie(self)
-        elif MainApplication.RandomOutput(self) == 2:
+        elif output == 2:
             MainApplication.popupmsg_losing(self)
         else:
             MainApplication.popupmsg_winning(self)
 
     def Paper(self):
         """when user selects Paper"""
-        MainApplication.RandomOutput(self)
-        if MainApplication.RandomOutput(self) == 1:
+        output = MainApplication.RandomOutput(self)
+        if output == 1:
             MainApplication.popupmsg_winning(self)
-        elif MainApplication.RandomOutput(self) == 2:
+        elif output == 2:
             MainApplication.popupmsg_tie(self)
         else:
             MainApplication.popupmsg_losing(self)
 
     def Scissor(self):
         """when user selects Scissor"""
-        MainApplication.RandomOutput(self)
-        if MainApplication.RandomOutput(self) == 1:
+        output = MainApplication.RandomOutput(self)
+        if output == 1:
             MainApplication.popupmsg_losing(self)
-        elif MainApplication.RandomOutput(self) == 2:
+        elif output == 2:
             MainApplication.popupmsg_winning(self)
         else:
             MainApplication.popupmsg_tie(self)
